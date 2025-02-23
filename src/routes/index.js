@@ -14,6 +14,17 @@ router.post("/watches", async (req, res) => {
   }
 });
 
+// Read all watches
+router.get("/watches", async (req, res) => {
+  try {
+    const watches = await Watch.find();
+    res.status(200).send(watches);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+
 
 module.exports = (app) => {
   app.use("/api", router);
