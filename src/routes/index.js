@@ -53,6 +53,24 @@ router.patch("/watches/:id", async (req, res) => {
   }
 });
 
+// Update a watch by ID using PUT
+router.put("/watches/:id", async (req, res) => {
+  try {
+    const watch = await Watch.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+      overwrite: true, // This option ensures the entire document is replaced
+    });
+    if (!watch) {
+      return res.status(404).send();
+    }
+    res.status(200).send(watch);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+
+
 module.exports = (app) => {
   app.use("/api", router);
 };
