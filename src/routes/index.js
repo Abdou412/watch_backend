@@ -70,6 +70,18 @@ router.put("/watches/:id", async (req, res) => {
   }
 });
 
+// Delete a watch by ID
+router.delete("/watches/:id", async (req, res) => {
+  try {
+    const watch = await Watch.findByIdAndDelete(req.params.id);
+    if (!watch) {
+      return res.status(404).send();
+    }
+    res.status(200).send(watch);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
 
 module.exports = (app) => {
   app.use("/api", router);
