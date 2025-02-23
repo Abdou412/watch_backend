@@ -24,7 +24,18 @@ router.get("/watches", async (req, res) => {
   }
 });
 
-
+// Read a single watch by ID
+router.get("/watches/:id", async (req, res) => {
+  try {
+    const watch = await Watch.findById(req.params.id);
+    if (!watch) {
+      return res.status(404).send();
+    }
+    res.status(200).send(watch);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
 
 module.exports = (app) => {
   app.use("/api", router);
