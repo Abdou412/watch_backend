@@ -32,13 +32,10 @@ To start the server, run:
 npm start
 ```
 
-The server will be running on `http://localhost:3000`.
+The server will be running on `http://localhost:3636`.
 
 ## API Endpoints
 
 - `GET /items` - Retrieve a list of items.
 - `POST /items` - Create a new item.
 
-## License
-
-This project is licensed under the ISC License.

@@ -17,15 +17,13 @@ const watchSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-   imgURL: {
+  imgURL: {
     type: String,
-   
   },
-
-
-
-
-
+  buyLink: {
+    type: String,
+    
+  },
 });
 
 const Watch = mongoose.model("Watch", watchSchema);
